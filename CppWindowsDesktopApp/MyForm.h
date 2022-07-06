@@ -68,6 +68,19 @@ namespace CppWindowsDesktopApp {
 	private: System::Windows::Forms::TextBox^ tbxLastName;
 	private: System::Windows::Forms::Label^ labelLastName;
 	private: System::Windows::Forms::Button^ btnDelete;
+	private: System::Windows::Forms::DomainUpDown^ domainUpDownTitle;
+
+	private: System::Windows::Forms::Label^ labelTitle;
+	private: System::Windows::Forms::DateTimePicker^ dateTimePickerBirth;
+	private: System::Windows::Forms::Label^ labelBirthdate;
+	private: System::Windows::Forms::DateTimePicker^ dateTimePickerStartToWork;
+	private: System::Windows::Forms::Label^ labelStartToWork;
+
+
+
+
+
+
 		   SqlConnection^ sqlConnection = gcnew SqlConnection(connectionString);
 
 #pragma region Windows Form Designer generated code
@@ -87,6 +100,12 @@ namespace CppWindowsDesktopApp {
 			   this->tbxLastName = (gcnew System::Windows::Forms::TextBox());
 			   this->labelLastName = (gcnew System::Windows::Forms::Label());
 			   this->btnDelete = (gcnew System::Windows::Forms::Button());
+			   this->domainUpDownTitle = (gcnew System::Windows::Forms::DomainUpDown());
+			   this->labelTitle = (gcnew System::Windows::Forms::Label());
+			   this->dateTimePickerBirth = (gcnew System::Windows::Forms::DateTimePicker());
+			   this->labelBirthdate = (gcnew System::Windows::Forms::Label());
+			   this->dateTimePickerStartToWork = (gcnew System::Windows::Forms::DateTimePicker());
+			   this->labelStartToWork = (gcnew System::Windows::Forms::Label());
 			   (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			   this->SuspendLayout();
 			   // 
@@ -149,7 +168,7 @@ namespace CppWindowsDesktopApp {
 			   // 
 			   this->btnAdd->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->btnAdd->Location = System::Drawing::Point(417, 15);
+			   this->btnAdd->Location = System::Drawing::Point(730, 15);
 			   this->btnAdd->Name = L"btnAdd";
 			   this->btnAdd->Size = System::Drawing::Size(75, 32);
 			   this->btnAdd->TabIndex = 5;
@@ -161,18 +180,19 @@ namespace CppWindowsDesktopApp {
 			   // 
 			   this->btnUpdate->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->btnUpdate->Location = System::Drawing::Point(417, 53);
+			   this->btnUpdate->Location = System::Drawing::Point(730, 53);
 			   this->btnUpdate->Name = L"btnUpdate";
 			   this->btnUpdate->Size = System::Drawing::Size(75, 34);
 			   this->btnUpdate->TabIndex = 6;
 			   this->btnUpdate->Text = L"Update";
 			   this->btnUpdate->UseVisualStyleBackColor = true;
+			   this->btnUpdate->Click += gcnew System::EventHandler(this, &MyForm::btnUpdate_Click);
 			   // 
 			   // tbxLastName
 			   // 
 			   this->tbxLastName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->tbxLastName->Location = System::Drawing::Point(89, 53);
+			   this->tbxLastName->Location = System::Drawing::Point(89, 43);
 			   this->tbxLastName->Name = L"tbxLastName";
 			   this->tbxLastName->Size = System::Drawing::Size(100, 21);
 			   this->tbxLastName->TabIndex = 7;
@@ -182,7 +202,7 @@ namespace CppWindowsDesktopApp {
 			   this->labelLastName->AutoSize = true;
 			   this->labelLastName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->labelLastName->Location = System::Drawing::Point(13, 53);
+			   this->labelLastName->Location = System::Drawing::Point(13, 44);
 			   this->labelLastName->Name = L"labelLastName";
 			   this->labelLastName->Size = System::Drawing::Size(70, 15);
 			   this->labelLastName->TabIndex = 8;
@@ -193,13 +213,71 @@ namespace CppWindowsDesktopApp {
 			   this->btnDelete->BackColor = System::Drawing::Color::IndianRed;
 			   this->btnDelete->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				   static_cast<System::Byte>(0)));
-			   this->btnDelete->Location = System::Drawing::Point(498, 14);
+			   this->btnDelete->Location = System::Drawing::Point(730, 93);
 			   this->btnDelete->Name = L"btnDelete";
 			   this->btnDelete->Size = System::Drawing::Size(75, 34);
 			   this->btnDelete->TabIndex = 9;
 			   this->btnDelete->Text = L"Delete";
 			   this->btnDelete->UseVisualStyleBackColor = false;
 			   this->btnDelete->Click += gcnew System::EventHandler(this, &MyForm::btnDelete_Click);
+			   // 
+			   // domainUpDownTitle
+			   // 
+			   this->domainUpDownTitle->Items->Add(L"Dr.");
+			   this->domainUpDownTitle->Items->Add(L"Mr.");
+			   this->domainUpDownTitle->Items->Add(L"Mrs.");
+			   this->domainUpDownTitle->Items->Add(L"Ms.");
+			   this->domainUpDownTitle->Location = System::Drawing::Point(89, 72);
+			   this->domainUpDownTitle->Name = L"domainUpDownTitle";
+			   this->domainUpDownTitle->Size = System::Drawing::Size(68, 20);
+			   this->domainUpDownTitle->TabIndex = 10;
+			   // 
+			   // labelTitle
+			   // 
+			   this->labelTitle->AutoSize = true;
+			   this->labelTitle->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->labelTitle->Location = System::Drawing::Point(50, 72);
+			   this->labelTitle->Name = L"labelTitle";
+			   this->labelTitle->Size = System::Drawing::Size(33, 15);
+			   this->labelTitle->TabIndex = 11;
+			   this->labelTitle->Text = L"Title:";
+			   // 
+			   // dateTimePickerBirth
+			   // 
+			   this->dateTimePickerBirth->Location = System::Drawing::Point(323, 15);
+			   this->dateTimePickerBirth->Name = L"dateTimePickerBirth";
+			   this->dateTimePickerBirth->Size = System::Drawing::Size(200, 20);
+			   this->dateTimePickerBirth->TabIndex = 12;
+			   // 
+			   // labelBirthdate
+			   // 
+			   this->labelBirthdate->AutoSize = true;
+			   this->labelBirthdate->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->labelBirthdate->Location = System::Drawing::Point(248, 15);
+			   this->labelBirthdate->Name = L"labelBirthdate";
+			   this->labelBirthdate->Size = System::Drawing::Size(61, 15);
+			   this->labelBirthdate->TabIndex = 13;
+			   this->labelBirthdate->Text = L"BirthDate:";
+			   // 
+			   // dateTimePickerStartToWork
+			   // 
+			   this->dateTimePickerStartToWork->Location = System::Drawing::Point(323, 43);
+			   this->dateTimePickerStartToWork->Name = L"dateTimePickerStartToWork";
+			   this->dateTimePickerStartToWork->Size = System::Drawing::Size(200, 20);
+			   this->dateTimePickerStartToWork->TabIndex = 14;
+			   // 
+			   // labelStartToWork
+			   // 
+			   this->labelStartToWork->AutoSize = true;
+			   this->labelStartToWork->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				   static_cast<System::Byte>(0)));
+			   this->labelStartToWork->Location = System::Drawing::Point(230, 43);
+			   this->labelStartToWork->Name = L"labelStartToWork";
+			   this->labelStartToWork->Size = System::Drawing::Size(79, 15);
+			   this->labelStartToWork->TabIndex = 15;
+			   this->labelStartToWork->Text = L"Start to Work:";
 			   // 
 			   // MyForm
 			   // 
@@ -208,6 +286,12 @@ namespace CppWindowsDesktopApp {
 			   this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			   this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			   this->ClientSize = System::Drawing::Size(841, 451);
+			   this->Controls->Add(this->labelStartToWork);
+			   this->Controls->Add(this->dateTimePickerStartToWork);
+			   this->Controls->Add(this->labelBirthdate);
+			   this->Controls->Add(this->dateTimePickerBirth);
+			   this->Controls->Add(this->labelTitle);
+			   this->Controls->Add(this->domainUpDownTitle);
 			   this->Controls->Add(this->btnDelete);
 			   this->Controls->Add(this->labelLastName);
 			   this->Controls->Add(this->tbxLastName);
@@ -260,15 +344,18 @@ namespace CppWindowsDesktopApp {
 		}
 		catch (Exception^)
 		{
-			MessageBox::Show("Error! Not Connected!");
+			MessageBox::Show("Error! Not Connected to Database!");
 		}
 	}
 
 	private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ name = tbxName->Text;
 		String^ lastName = tbxLastName->Text;
+		String^ title = domainUpDownTitle->Text;
+		DateTime birthDate = System::Convert::ToDateTime(dateTimePickerBirth->Text);
+		DateTime startToWork = System::Convert::ToDateTime(dateTimePickerStartToWork->Text);
 
-		if (name == "" || lastName == "")
+		if (name == "" || lastName == "" || title == "")
 		{
 			MessageBox::Show("Fill all items!");
 		}
@@ -276,11 +363,14 @@ namespace CppWindowsDesktopApp {
 		{
 			sqlConnection->Open();
 
-			String^ myInsertCommand = "Insert Personeller (Adi,SoyAdi) values(@name,@lastName)";
+			String^ myInsertCommand = "Insert Personeller (Adi,SoyAdi,UnvanEki,DogumTarihi,IseBaslamaTarihi) values(@name,@lastName,@title,Cast(@birthDate as DATETIME),Cast(@startToWork as DATETIME))";
 
 			SqlCommand^ cmd = gcnew SqlCommand(myInsertCommand, sqlConnection);
 			cmd->Parameters->AddWithValue("@name", name);
 			cmd->Parameters->AddWithValue("@lastName", lastName);
+			cmd->Parameters->AddWithValue("@title", title);
+			cmd->Parameters->AddWithValue("@birthDate", birthDate);
+			cmd->Parameters->AddWithValue("@startToWork", startToWork);
 
 			try
 			{
@@ -326,12 +416,56 @@ namespace CppWindowsDesktopApp {
 				sqlConnection->Close();
 			}
 		}
-		
+
 	}
+
+
+
 	private: System::Void dataGridView1_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 		tbxLastName->Tag = dataGridView1->CurrentRow->Cells["PersonelID"]->Value;
 		tbxLastName->Text = dataGridView1->CurrentRow->Cells["SoyAdi"]->Value->ToString();
 		tbxName->Text = dataGridView1->CurrentRow->Cells["Adi"]->Value->ToString();
 	}
-};
+
+	private: System::Void btnUpdate_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		String^ name = tbxName->Text;
+		String^ lastName = tbxLastName->Text;
+		String^ title = domainUpDownTitle->Text;
+		DateTime birthDate = System::Convert::ToDateTime(dateTimePickerBirth->Text);
+		DateTime startToWork = System::Convert::ToDateTime(dateTimePickerStartToWork->Text);
+
+		if (dataGridView1 != nullptr)
+		{
+			sqlConnection->Open();
+			int id = System::Convert::ToInt16(dataGridView1->CurrentRow->Cells["PersonelID"]->Value);
+
+			String^ myUpdateCommand = "update Personeller set SoyAdi=@lastName, Adi=@name, UnvanEki=@title, DogumTarihi=@birthDate, IseBaslamaTarihi=@startToWork where PersonelID=@id";
+
+			SqlCommand^ cmd = gcnew SqlCommand(myUpdateCommand, sqlConnection);
+			cmd->Parameters->AddWithValue("@id", id);
+			cmd->Parameters->AddWithValue("@name", name);
+			cmd->Parameters->AddWithValue("@lastName", lastName);
+			cmd->Parameters->AddWithValue("@title", title);
+			cmd->Parameters->AddWithValue("@birthDate", birthDate);
+			cmd->Parameters->AddWithValue("@startToWork", startToWork);
+
+			try
+			{
+				cmd->ExecuteNonQuery();
+				MessageBox::Show("Person Records Updated!");
+
+				RefreshPersonelList();
+			}
+			catch (Exception^)
+			{
+				MessageBox::Show("Error updating values!");
+			}
+			finally
+			{
+				sqlConnection->Close();
+			}
+		}
+	}
+	};
 }
