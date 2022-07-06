@@ -57,15 +57,15 @@ namespace CppWindowsDesktopApp {
 			// 
 			// textBox1
 			// 
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox1->Location = System::Drawing::Point(30, 12);
 			this->textBox1->Multiline = true;
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(223, 121);
 			this->textBox1->TabIndex = 0;
-			this->textBox1->Text = L"This App is built via C++ by Soheil Asadi as a Practice sandbox on \'Windows Form"
-				L"\' Technology, using C++.";
+			this->textBox1->Text = L"This App is built via C++ by Soheil Asadi as a Practice sandbox on \'Windows Form\'"
+				L" Technology, using C++ & Sql Server 'Northwind' database.";
 			// 
 			// btnOk
 			// 
